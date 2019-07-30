@@ -1,6 +1,7 @@
 import os
+import sys
 from setuptools import setup, find_packages
-from Cython.Build import cythonize
+from distutils.core import Extension
 
 with open('README.md') as f:
     long_description = f.read()
@@ -16,6 +17,21 @@ version_line = list(filter(lambda l: l.startswith('VERSION'), open(init)))[0]
 
 VERSION = get_version(eval(version_line.split('=')[-1]))
 
+try:
+    from Cython.Build import cythonize
+except ImportError:
+    USE_CYTHON = False
+else:
+    USE_CYTHON = True
+
+ext = '.pyx' if USE_CYTHON else '.c'
+
+extensions = [Extension(name="nmutils.c_pythagorean_triples", sources=["nmutils/c_pythagorean_triples" + ext]),
+        Extension(name="nmutils.miller_rabin", sources=["nmutils/miller_rabin" + ext])]
+
+if USE_CYTHON:
+    extensions = cythonize("nmutils/*.pyx")
+
 setup(
     name="nmutils",
     version=VERSION,
@@ -27,7 +43,5 @@ setup(
     long_description_content_type='text/markdown',
     url="https://github.com/neilmarshall/nmutils.git",
     packages=find_packages(),
-    install_requires=["cython>=0.29"],
-    setup_requires=["cython>=0.29"],
-    ext_modules=cythonize("nmutils/*.pyx")
+    ext_modules=extensions
 )
