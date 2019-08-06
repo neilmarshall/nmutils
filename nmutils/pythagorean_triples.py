@@ -14,8 +14,12 @@ class PythagoreanTripleGenerator():
     be equal to the sum of the side lengths, i.e. the perimeter)
 
     >>> ptg = PythagoreanTripleGenerator()
+
     >>> ptg.GetNextTriple()
     (3, 4, 5)
+
+    >>> ptg.GetNextTriple()
+    (5, 12, 13)
     """
 
     def __init__(self):

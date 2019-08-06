@@ -28,6 +28,14 @@ cdef class MillerRabin():
         Return primality of n
         
         Uses trial division for small n and Miller-Rabin for larger values.
+
+        >>> mr = MillerRabin()
+
+        >>> mr.is_prime(15)
+        False
+
+        >>> mr.is_prime(17)
+        True
         """
         # discount even numbers
         if n <= 2 or n % 2 == 0:

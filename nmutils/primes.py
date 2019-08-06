@@ -25,8 +25,14 @@ def is_prime(n, known_primes=None):
     False
 
     >>> primes = [2, 3, 5]
-    >>> is_prime(17)
+    >>> is_prime(17, primes)
     True
+
+    >>> is_prime(37, primes)  # doctest: +NORMALIZE_WHITESPACE
+    Traceback (most recent call last):
+        ...
+    nmutils.primes.PrimeError: Known primes passed must be at least as
+    great as square root of n (max prime = 5, square root of n = 6)
     """
     if n <= 1:
         return False
