@@ -6,3 +6,6 @@ include LICENSE
 
 # Cython pyx files
 include nmutils/*.pyx
+
+# Exclude tests
+exclude tests/*
