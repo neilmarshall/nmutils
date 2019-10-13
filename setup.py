@@ -45,6 +45,6 @@ setup(
     project_urls={
         "Documentation": "http://www.nmutils-documentation.com.s3-website.eu-west-2.amazonaws.com/index.html"
     },
-    packages=find_packages(),
+    packages=find_packages(exclude=("nmutils.tests",)),
     ext_modules=extensions
 )
