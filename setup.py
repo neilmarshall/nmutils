@@ -42,6 +42,9 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url="https://github.com/neilmarshall/nmutils.git",
+    project_urls={
+        "Documentation": "http://www.nmutils-documentation.com.s3-website.eu-west-2.amazonaws.com/index.html"
+    },
     packages=find_packages(),
     ext_modules=extensions
 )
